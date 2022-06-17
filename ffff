@@ -1,0 +1,38 @@
+if game:GetService("CoreGui"):FindFirstChild("NOOB HUB") then
+   game:GetService("CoreGui"):FindFirstChild("NOOB HUB"):Destroy()
+end
+local UILib = loadstring(game:HttpGet('https://raw.githubusercontent.com/zenhubzen/lol/main/testlib'))()
+
+local win = UILib:Window("ZEN HUB | BLOX FRUIT",Color3.fromRGB(255, 255, 255), Enum.KeyCode.RightControl)
+local MainSection = win:Tab("Main")
+
+MainSection:Button("Button", function()
+
+end)
+
+MainSection:Toggle("Toggle",true, function(State)
+
+end)
+
+MainSection:Dropdown("Dropdown 1", {"1","2","3"}, function(String)
+
+end)
+MainSection:Slider("Slider",0,100,16,true, function(State)
+    
+end)
+
+MainSection:Textbox("TextBox Info", "Epic PlaceHolder", function(getText)
+    print(getText) -- Prints whatever player types
+end)
+
+local Settings = win:Tab("Settings")
+Settings:Label("UI Toggle Key:  Right-Ctrl")
+Settings:Label("Credit : 03s.4358")
+Settings:Button("Copy Discord Invite", function()
+    setclipboard("https://discord.gg/dY8rpSktyn")
+    UILib:Notification("Notification", "Copied!", "Okay")
+end)
+Settings:Button("Copy Youtube", function()
+   setclipboard("https://www.youtube.com/channel/UCpbG2pkTiPODfMOq_voRQDg/videos")
+   UILib:Notification("Notification", "Copied!", "Okay")
+end)
