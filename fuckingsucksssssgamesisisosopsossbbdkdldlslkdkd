@@ -6969,48 +6969,6 @@ spawn(function()
   end
   end)]]
   
-local player = game.Players.LocalPlayer
-local radius = 75
-local speed = 660
-local offsetc = CFrame.new(0, 17, 0)
-
-spawn(function()
-    while wait() do
-    if _G.DriveBoat then
-    pcall(function()
-        for i, v in pairs(game:GetService("Workspace").Boats:GetChildren()) do
-            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyBoat","Pirate Sloop")
-             toTarget(game:GetService("Workspace").Boats["Pirate Sloop"].Seat.CFrame)
-        if v:FindFirstChild("Owner").Value == player then
-        local uwu = v:FindFirstChild("VehicleSeat")
-        spawn(function()
-            uwu:FindFirstChild("BodyVelocity"):Destroy()
-            uwu:FindFirstChild("BodyGyro"):Destroy()
-            uwu:FindFirstChild("BodyPosition"):Destroy()
-            end)
-        local primaryPart = v.PrimaryPart
-        game:GetService("RunService").Heartbeat:Connect(function()
-            local plrpos = player.Character.PrimaryPart.Position
-            local angle = math.rad((tick() * speed) % 360)
-            local offsetX = radius * math.cos(angle)
-            local offsetZ = radius * math.sin(angle)
-            local targetPos = Vector3.new(plrpos.X + offsetX, plrpos.Y, plrpos.Z + offsetZ)
-            primaryPart.CFrame = CFrame.new(targetPos) * offsetc
-            local lookVector = (plrpos - primaryPart.Position).Unit
-            primaryPart.CFrame = CFrame.new(primaryPart.Position, primaryPart.Position + Vector3.new(lookVector.X, 0, lookVector.Z))
-            end)
-        end
-        end
-    end)
-    end
-    end
-    end)
-  
-  Page1:Toggle("Auto Look To Moon",false,"look to moon",function(value)
-  _G.DriveBoat = value
-end)
-  
-  
   Page1:Toggle('Rain Fruit', _G.Rain,"Fruit rain, only visible to you",function(value)
 _G.Rain = value
   end)
